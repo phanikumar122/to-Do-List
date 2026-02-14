@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TodoList App</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <div class="container">
+        <header>
+            <div class="header-left">
+                <h1>📝 My TodoList</h1>
+                <p>Stay organized and get things done!</p>
+            </div>
+            <div class="header-right">
+                <button id="settingsButton" class="btn-settings" title="Settings">⚙️</button>
+            </div>
+        </header>
+
+        <div class="todo-form">
+            <input type="text" id="todoTitle" placeholder="What needs to be done?" required>
+            <textarea id="todoDescription" placeholder="Description (optional)"></textarea>
+            <div class="form-controls">
+                <select id="todoPriority">
+                    <option value="medium">Medium Priority</option>
+                    <option value="high">High Priority</option>
+                    <option value="low">Low Priority</option>
+                </select>
+                <input type="date" id="todoDueDate">
+                <button onclick="addTodo()">Add Todo</button>
+            </div>
+        </div>
+
+        <div class="filters">
+            <button onclick="filterTodos('all', this)" class="active">All</button>
+            <button onclick="filterTodos('active', this)">Active</button>
+            <button onclick="filterTodos('completed', this)">Completed</button>
+        </div>
+
+        <div id="todoList" class="todo-list">
+            <!-- Todos will be loaded here -->
+        </div>
+
+        <div id="loading" class="loading">Loading...</div>
+        <div id="error" class="error" style="display: none;"></div>
+    </div>
+
+    <div id="settingsPanel" class="settings-panel" aria-hidden="true">
+        <div class="settings-inner">
+            <h3>Appearance</h3>
+            <label class="field">Theme:
+                <select id="themeSelect">
+                    <option value="dark">Dark</option>
+                    <option value="light">Light</option>
+                </select>
+            </label>
+            <label class="field">Primary Color:
+                <input type="color" id="primaryColor" value="#4CAF50">
+            </label>
+            <label class="field">Font:
+                <select id="fontFamily">
+                    <option value="Poppins">Poppins</option>
+                    <option value="Inter, sans-serif">Inter</option>
+                    <option value="Roboto">Roboto</option>
+                </select>
+            </label>
+            <label class="field">Font size:
+                <input type="range" id="fontSize" min="13" max="20" value="16">
+            </label>
+            <div class="settings-actions">
+                <button id="closeSettings" class="btn-close">Close</button>
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+
+</html>
